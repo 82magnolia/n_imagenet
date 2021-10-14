@@ -1,5 +1,5 @@
 # N-ImageNet: Towards Robust, Fine-Grained Object Recognition with Event Cameras
-Official PyTorch implementation of **N-ImageNet: Towards Robust, Fine-Grained Object Recognition with Event Cameras** [[Paper]](https://openaccess.thecvf.com/content/ICCV2021/html/Kim_N-ImageNet_Towards_Robust_Fine-Grained_Object_Recognition_With_Event_Cameras_ICCV_2021_paper.html)[Video](https://www.youtube.com/watch?v=7mWPYGRfk-I).
+Official PyTorch implementation of **N-ImageNet: Towards Robust, Fine-Grained Object Recognition with Event Cameras** [[Paper]](https://openaccess.thecvf.com/content/ICCV2021/html/Kim_N-ImageNet_Towards_Robust_Fine-Grained_Object_Recognition_With_Event_Cameras_ICCV_2021_paper.html) [[Video]](https://www.youtube.com/watch?v=7mWPYGRfk-I).
 
 [<img src="sample_1.png" width="500"/>](sample_1.png)
 [<img src="sample_2.png" width="500"/>](sample_2.png)
