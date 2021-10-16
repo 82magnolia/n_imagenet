@@ -1,4 +1,4 @@
-from real_cnn_model.data.imagenet import ImageNetDataset, StreakImageNetDataset
+from real_cnn_model.data.imagenet import ImageNetDataset
 from torch.utils.data import DataLoader
 from base.data.data_container import DataContainer
 import torch
