@@ -53,19 +53,19 @@ To illustrate, if you open `train_list.txt` you will see the following
 /home/jhkim/Datasets/N_Imagenet/extracted_train/n15075141/n15075141_999.npz
 ```
 Modify each path within the .txt file so that it accords with the directory in which N-ImageNet is downloaded.
-For example, if N-ImageNet is located in `/home/karina/assets/Datasets/`, modify `train.txt` as follows.
+For example, if N-ImageNet is located in `/home/user/assets/Datasets/`, modify `train.txt` as follows.
 ```
-/home/karina/assets/Datasets/N_Imagenet/extracted_train/n01440764/n01440764_10026.npz
+/home/user/assets/Datasets/N_Imagenet/extracted_train/n01440764/n01440764_10026.npz
 ⋮
-/home/karina/assets/Datasets/N_Imagenet/extracted_train/n15075141/n15075141_999.npz
+/home/user/assets/Datasets/N_Imagenet/extracted_train/n15075141/n15075141_999.npz
 ```
 Once this is done, create a `Datasets/` directory within `real_cnn_model`, and create a symbolic link within `Datasets`.
-To illustrate, using the directory structure of the previous example, first use the following command.
+To illustrate, using the directory structure of the previous example, deploy the following command.
 ```
 cd PATH_TO_REPOSITORY/real_cnn_model
 mkdir Datasets; cd Datasets
-ln -sf /home/karina/assets/Datasets/N_Imagenet/ ./
-ln -sf /home/karina/assets/Datasets/N_Imagenet_cam/ ./  (If you have also downloaded the variants)
+ln -sf /home/user/assets/Datasets/N_Imagenet/ ./
+ln -sf /home/user/assets/Datasets/N_Imagenet_cam/ ./  (If you have also downloaded the variants)
 ```
 Congratulations! Now you can start training/testing models on N-ImageNet.
 
@@ -91,4 +91,5 @@ python main.py --config configs/imagenet/cnn_adam_acc_two_channel_big_kernel_ran
 ```
 
 ### Downloading Pretrained Models
-Coming soon!
+One can download the pretrained models through the [following link](https://drive.google.com/drive/folders/1aK7oLyu0_TKWdDNB8j1X4PSceIPtWifA?usp=sharing).
+Here we contain pretrained models and the configs used to train them.
