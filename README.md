@@ -90,6 +90,18 @@ You evaluate the performance of this model on the N-ImageNet validation split by
 python main.py --config configs/imagenet/cnn_adam_acc_two_channel_big_kernel_random_idx.ini --override 'load_model=PATH_TO_REPOSITORY/real_cnn_model/experiments/best.tar'
 ```
 
+### Naming Conventions
+The naming of event representations used in the codebase is different from that of the original paper. Please use the following table to convert event representations used in the paper to event representations used in the codebase.
+
+| Paper               | Codebase                   |
+|---------------------|----------------------------|
+| DiST                | reshape_then_acc_adj_sort  |
+| Binary Event Image  | reshape_then_acc_flat_pol  |
+| Event Image         | reshape_then_acc           |
+| Timestamp Image     | reshape_then_acc_time_pol  |
+| Event Histogram     | reshape_then_acc_count_pol |
+| Sorted Time Surface | reshape_then_acc_sort      |
+
 ### Downloading Pretrained Models
 One can download the pretrained models through the [following link](https://drive.google.com/drive/folders/1aK7oLyu0_TKWdDNB8j1X4PSceIPtWifA?usp=sharing).
 Here we contain pretrained models and the configs used to train them.
