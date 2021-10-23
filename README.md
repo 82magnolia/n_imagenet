@@ -105,3 +105,17 @@ The naming of event representations used in the codebase is different from that 
 ### Downloading Pretrained Models
 One can download the pretrained models through the [following link](https://drive.google.com/drive/folders/1aK7oLyu0_TKWdDNB8j1X4PSceIPtWifA?usp=sharing).
 Here we contain pretrained models and the configs used to train them.
+
+## Citation
+If you find the dataset or codebase useful, please cite
+
+```bibtex
+@InProceedings{Kim_2021_ICCV,
+    author    = {Kim, Junho and Bae, Jaehyeok and Park, Gangin and Zhang, Dongsu and Kim, Young Min},
+    title     = {N-ImageNet: Towards Robust, Fine-Grained Object Recognition With Event Cameras},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2021},
+    pages     = {2146-2156}
+}
+```
