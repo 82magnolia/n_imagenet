@@ -13,6 +13,7 @@ To download N-ImageNet, please use the following [DropBox link](https://www.drop
 Once you go to the DropBox folder, there will be two .7z files: N_ImageNet.7z (original N-ImageNet train/val set) and N_ImageNet_cam.7z (N-ImageNet variants recorded under diverse camera motion and illumination).
 As the file sizes are large, it may take up to 1 day to download the entire N-ImageNet dataset.
 If the download is too slow, we also provide an option to share the DropBox folder once you fill out the following questionaire: [[Link]](https://docs.google.com/forms/d/e/1FAIpQLSehK79GEtkyqKLTcrzD_MAOpEo6oL-zHBT32CcOvz1KjzsfIA/viewform?usp=sf_link).
+**Note:** While we try to review the questionaires on a regular basis, we often forget to do so. Therefore, if you want quick DropBox sharing, please drop an email to 82magnolia@snu.ac.kr notifying that you have filled out the form.
 
 Note that for N_ImageNet_cam.7z, the file names are different from the names used in the ICCV 2021 paper.
 Please use the following table to convert folder names between the N-ImageNet variants (saved in N_Imagenet_cam.7z) and the variant names presented in the paper.
