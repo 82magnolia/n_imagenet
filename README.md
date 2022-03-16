@@ -10,6 +10,7 @@ If you have any questions regarding the dataset or the baseline implementations,
 
 ## Downloading N-ImageNet
 To download N-ImageNet, please use the following [DropBox link](https://www.dropbox.com/sh/47we7z2gff5barh/AADU4GyWnzLFzMzBDjLP00baa?dl=0).
+**Note:** We are having a temporal problem with DropBox right now. We expect to fix the issue within five business days. Sorry for the inconvenience.
 Once you go to the DropBox folder, there will be two .7z files: N_ImageNet.7z (original N-ImageNet train/val set) and N_ImageNet_cam.7z (N-ImageNet variants recorded under diverse camera motion and illumination).
 As the file sizes are large, it may take up to 1 day to download the entire N-ImageNet dataset.
 If the download is too slow, we also provide an option to share the DropBox folder once you fill out the following questionaire: [[Link]](https://docs.google.com/forms/d/e/1FAIpQLSehK79GEtkyqKLTcrzD_MAOpEo6oL-zHBT32CcOvz1KjzsfIA/viewform?usp=sf_link).
