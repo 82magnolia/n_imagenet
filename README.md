@@ -9,18 +9,25 @@ In this repository, we provide instructions for downloading N-ImageNet along wit
 If you have any questions regarding the dataset or the baseline implementations, please leave an issue or contact 82magnolia@snu.ac.kr.
 
 ## Downloading N-ImageNet
-To download N-ImageNet, please use the following [DropBox link](https://www.dropbox.com/sh/47we7z2gff5barh/AADU4GyWnzLFzMzBDjLP00baa?dl=0).
+To download N-ImageNet, please use the following [DropBox link](https://www.dropbox.com/sh/y7wfe2by4mci7f3/AACybPGhoR6PWpEnVQYp4vF2a?dl=0).
+Once you go to the DropBox folder, there will be two folders: `N_Imagenet_release` (original N-ImageNet train/val set) and `N_Imagenet_cam_release` (N-ImageNet variants recorded under diverse camera motion and illumination).
 
-**Note:** We are having a temporal problem with DropBox right now. We expect to fix the issue within five business days. Sorry for the inconvenience.
+### N-ImageNet Train/Val Set (`N_Imagenet_release`)
+Download each spliited .tar.gz file in the `N_Imagenet_release` directory and extract through the following command:
+```
+cat n_imagenet.tar.gz.* | tar xzvf -
+```
+After extracting, you will see the `N_Imagenet` folder which contains the train/val split.
 
-Once you go to the DropBox folder, there will be two .7z files: N_ImageNet.7z (original N-ImageNet train/val set) and N_ImageNet_cam.7z (N-ImageNet variants recorded under diverse camera motion and illumination).
-As the file sizes are large, it may take up to 1 day to download the entire N-ImageNet dataset.
-If the download is too slow, we also provide an option to share the DropBox folder once you fill out the following questionaire: [[Link]](https://docs.google.com/forms/d/e/1FAIpQLSehK79GEtkyqKLTcrzD_MAOpEo6oL-zHBT32CcOvz1KjzsfIA/viewform?usp=sf_link).
+### N-ImageNet Variants (`N_Imagenet_cam_release`)
+Download each spliited .tar.gz file in the `N_Imagenet_cam_release` directory and extract through the following command:
+```
+cat n_imagenet_cam.tar.gz.* | tar xzvf -
+```
+After extracting, you will see the `N_Imagenet_cam` folder which contains all the variants.
 
-**Note:** While we try to review the questionaires on a regular basis, we often forget to do so. Therefore, if you want quick DropBox sharing, please drop an email to 82magnolia@snu.ac.kr notifying that you have filled out the form.
-
-Note that for N_ImageNet_cam.7z, the file names are different from the names used in the ICCV 2021 paper.
-Please use the following table to convert folder names between the N-ImageNet variants (saved in N_Imagenet_cam.7z) and the variant names presented in the paper.
+**Note:** For `N_ImageNet_cam`, the file names are different from the names used in the ICCV 2021 paper.
+Please use the following table to convert folder names between the N-ImageNet variants (saved in `N_Imagenet_cam`) and the variant names presented in the paper.
 
 | DropBox                | Paper                   |
 |------------------------|-------------------------|
