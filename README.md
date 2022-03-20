@@ -9,18 +9,24 @@ In this repository, we provide instructions for downloading N-ImageNet along wit
 If you have any questions regarding the dataset or the baseline implementations, please leave an issue or contact 82magnolia@snu.ac.kr.
 
 ## Downloading N-ImageNet
+**Update:** The downloading method has changed from the original release of the dataset due to DropBox policies that inhibit normal users from downloading large files over 20GB. 
+To circumvent the issue, we share the spliited version of the dataset which consists of `.tar.gz` files below 20GB. 
+This is also expected to make the downloading time more manageable. 
+Nevertheless, feel free to email 82magnolia@snu.ac.kr if you face any problems with the new downloading method.
+Note that the old links and the shared DropBox folder will no longer work from now as we made the transition.
+
 To download N-ImageNet, please use the following [DropBox link](https://www.dropbox.com/sh/y7wfe2by4mci7f3/AACybPGhoR6PWpEnVQYp4vF2a?dl=0).
 Once you go to the DropBox folder, there will be two folders: `N_Imagenet_release` (original N-ImageNet train/val set) and `N_Imagenet_cam_release` (N-ImageNet variants recorded under diverse camera motion and illumination).
 
 ### N-ImageNet Train/Val Set (`N_Imagenet_release`)
-Download each spliited .tar.gz file in the `N_Imagenet_release` directory and extract through the following command:
+Download each spliited `.tar.gz` file in the `N_Imagenet_release` directory and extract through the following command:
 ```
 cat n_imagenet.tar.gz.* | tar xzvf -
 ```
 After extracting, you will see the `N_Imagenet` folder which contains the train/val split.
 
 ### N-ImageNet Variants (`N_Imagenet_cam_release`)
-Download each spliited .tar.gz file in the `N_Imagenet_cam_release` directory and extract through the following command:
+Download each spliited `.tar.gz` file in the `N_Imagenet_cam_release` directory and extract through the following command:
 ```
 cat n_imagenet_cam.tar.gz.* | tar xzvf -
 ```
