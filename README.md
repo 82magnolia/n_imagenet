@@ -142,7 +142,7 @@ The naming of event representations used in the codebase is different from that 
 | Sorted Time Surface | reshape_then_acc_sort      |
 
 ### Downloading Pretrained Models
-One can download the pretrained models through the [following link](https://drive.google.com/drive/folders/1aK7oLyu0_TKWdDNB8j1X4PSceIPtWifA?usp=sharing).
+One can download the pretrained models through the [following link](https://www.dropbox.com/sh/4bqdqkiq0n0p6ej/AACU8ImMFbbkDqiqi5YLETQ5a?dl=0).
 Here we contain pretrained models and the configs used to train them.
 
 ## Citation
