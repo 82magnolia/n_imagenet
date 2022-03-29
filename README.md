@@ -9,11 +9,7 @@ In this repository, we provide instructions for downloading N-ImageNet along wit
 If you have any questions regarding the dataset or the baseline implementations, please leave an issue or contact 82magnolia@snu.ac.kr.
 
 ## Downloading N-ImageNet
-**Update:** The downloading method has changed from the original release of the dataset due to DropBox policies that inhibit normal users from downloading large files over 20GB. 
-To circumvent the issue, we share the spliited version of the dataset which consists of `.tar.gz` files below 20GB. 
-This is also expected to make the downloading time more manageable. 
-Nevertheless, feel free to email 82magnolia@snu.ac.kr if you face any problems with the new downloading method.
-Note that the old links and the shared DropBox folder will no longer work from now as we made the transition.
+**Update:** Currently, the DropBox link is not working again. It is due to the large size of the dataset, as DropBox prohibits file downloads over 200GB. We are currently looking for alternative file sharing services. We apologize for the inconvenience. If you are in urgent need for using N-ImageNet, drop an email with your DropBox ID to 82magnolia@snu.ac.kr and I will share the DropBox files with you (until the issue is resolved). In the meantime, we will try to recover the downloading links as soon as possible. 
 
 To download N-ImageNet, please use the following [DropBox link](https://www.dropbox.com/sh/y7wfe2by4mci7f3/AACybPGhoR6PWpEnVQYp4vF2a?dl=0).
 Once you go to the DropBox folder, there will be two folders: `N_Imagenet_release` (original N-ImageNet train/val set) and `N_Imagenet_cam_release` (N-ImageNet variants recorded under diverse camera motion and illumination).
