@@ -9,42 +9,9 @@ In this repository, we provide instructions for downloading N-ImageNet along wit
 If you have any questions regarding the dataset or the baseline implementations, please leave an issue or contact 82magnolia@snu.ac.kr.
 
 ## Downloading N-ImageNet
-**Update:** Currently, the DropBox link is not working again. It is due to the large size of the dataset, as DropBox prohibits file downloads over 200GB. We are currently looking for alternative file sharing services. We apologize for the inconvenience. If you are in urgent need for using N-ImageNet, drop an email with your DropBox ID to 82magnolia@snu.ac.kr and I will share the DropBox files with you (until the issue is resolved). In the meantime, we will try to recover the downloading links as soon as possible. 
-
-To download N-ImageNet, please use the following [DropBox link](https://www.dropbox.com/sh/y7wfe2by4mci7f3/AACybPGhoR6PWpEnVQYp4vF2a?dl=0).
-Once you go to the DropBox folder, there will be two folders: `N_Imagenet_release` (original N-ImageNet train/val set) and `N_Imagenet_cam_release` (N-ImageNet variants recorded under diverse camera motion and illumination).
-
-### N-ImageNet Train/Val Set (`N_Imagenet_release`)
-Download each spliited `.tar.gz` file in the `N_Imagenet_release` directory and extract through the following command:
-```
-cat n_imagenet.tar.gz.* | tar xzvf -
-```
-After extracting, you will see the `N_Imagenet` folder which contains the train/val split.
-
-### N-ImageNet Variants (`N_Imagenet_cam_release`)
-Download each spliited `.tar.gz` file in the `N_Imagenet_cam_release` directory and extract through the following command:
-```
-cat n_imagenet_cam.tar.gz.* | tar xzvf -
-```
-After extracting, you will see the `N_Imagenet_cam` folder which contains all the variants.
-
-**Note:** For `N_ImageNet_cam`, the file names are different from the names used in the ICCV 2021 paper.
-Please use the following table to convert folder names between the N-ImageNet variants (saved in `N_Imagenet_cam`) and the variant names presented in the paper.
-
-| DropBox                | Paper                   |
-|------------------------|-------------------------|
-| val_mode_1             | Validation 1            |
-| val_mode_3             | Validation 5            |
-| val_mode_5             | Validation 2            |
-| val_mode_6             | Validation 3            |
-| val_mode_7             | Validation 4            |
-| val_mode_brightness_4  | Validation 6            |
-| val_mode_brightness_5  | Validation 7            |
-| val_mode_brightness_6  | Validation 8            |
-| val_mode_brightness_7  | Validation 9            |
-
-If you have any additional questions regarding the dataset, drop an email to 82magnolia@snu.ac.kr.
-
+To download N-ImageNet, please answer the following [questionaire](https://docs.google.com/forms/d/e/1FAIpQLScURvrZNQArc86M3tA4fKTCgoR_YKqDVuQcygkKttzu5pDEow/viewform?usp=sf_link).
+Once you fill out the questionaire, we will send you the donwload instructions for N-ImageNet.
+If you have any additional questions regarding the dataset or have not received an instructions link long after the questionaire is filled, drop an email to 82magnolia@snu.ac.kr.
 
 ## Training / Evaluating Baseline Models
 ### Installation
@@ -138,7 +105,7 @@ The naming of event representations used in the codebase is different from that 
 | Sorted Time Surface | reshape_then_acc_sort      |
 
 ### Downloading Pretrained Models
-One can download the pretrained models through the [following link](https://www.dropbox.com/sh/4bqdqkiq0n0p6ej/AACU8ImMFbbkDqiqi5YLETQ5a?dl=0).
+One can download the pretrained models through the [following link](https://drive.google.com/drive/folders/1kmtgjX9hC2kRgUjoBklKt53ftkdQOZk-?usp=sharing).
 Here we contain pretrained models and the configs used to train them.
 
 ## Citation
