@@ -13,7 +13,7 @@ To download N-ImageNet, please answer the following [questionaire](https://docs.
 Once you fill out the questionaire, we will send you the donwload instructions for N-ImageNet.
 If you have any additional questions regarding the dataset or have not received an instructions link long after the questionaire is filled, drop an email to 82magnolia@snu.ac.kr.
 
-**Warning** N-ImageNet is distributed through Google drive. Recently, we found that Google disables large file sharing if the number of total downloads for a short period of time reaches a certain limit. While this is not an issue most of the time, the file sharing links may break on paper dealines or rebuttal periods. We therefore suggest authors to download N-ImageNet at least four weeks prior to the paper deadline, and earlier the better. Nevertheless, please leave an email to 82magnolia@snu.ac.kr if you are in urgent need of N-ImageNet and the file share links are not working.
+**Warning:** N-ImageNet is distributed through Google drive. Recently, we found that Google disables large file sharing if the number of total downloads for a short period of time reaches a certain limit. While this is not an issue most of the time, the file sharing links may break on paper dealines or rebuttal periods. We therefore suggest authors to download N-ImageNet at least four weeks prior to the paper deadline, and earlier the better. Nevertheless, please leave an email to 82magnolia@snu.ac.kr if you are in urgent need of N-ImageNet and the file share links are not working.
 
 ## Training / Evaluating Baseline Models
 ### Installation
