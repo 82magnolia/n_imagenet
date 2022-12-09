@@ -65,11 +65,14 @@ For example, if N-ImageNet is located in `/home/user/assets/Datasets/`, modify `
 ⋮
 /home/user/assets/Datasets/N_Imagenet/extracted_train/n15075141/n15075141_999.npz
 ```
+In addition, download the `Imagenet/` folder from [here](https://drive.google.com/drive/folders/14IHTvURvBmNKDtX6E0jQOMl0yTtDvXSy?usp=share_link) which contains the development kit text files needed to run the code below.
+
 Once this is done, create a `Datasets/` directory within `real_cnn_model`, and create a symbolic link within `Datasets`.
 To illustrate, using the directory structure of the previous example, deploy the following command.
 ```
 cd PATH_TO_REPOSITORY/real_cnn_model
 mkdir Datasets; cd Datasets
+ln -sf /home/user/assets/Datasets/Imagenet/ ./
 ln -sf /home/user/assets/Datasets/N_Imagenet/ ./
 ln -sf /home/user/assets/Datasets/N_Imagenet_cam/ ./  (If you have also downloaded the variants)
 ```
