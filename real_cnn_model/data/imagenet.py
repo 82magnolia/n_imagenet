@@ -928,7 +928,7 @@ class ImageNetDataset(Dataset):
             self.event_parser = self.augment_parser(parse_event)
 
         # Choose loader ((N, 4) event tensor -> Network input)
-        if self.loader_type is None or self.loader_type == 'reshape_then_acc':
+        if self.loader_type is None or self.loader_type in ['event_image', 'reshape_then_acc']:
             self.loader = reshape_then_acc
         elif self.loader_type == 'reshape_then_acc_time':
             self.loader = reshape_then_acc_time
@@ -938,19 +938,19 @@ class ImageNetDataset(Dataset):
             self.loader = reshape_then_acc_all
         elif self.loader_type == 'reshape_then_flat_pol':
             self.loader = reshape_then_flat_pol
-        elif self.loader_type == 'reshape_then_flat':
+        elif self.loader_type in ['binary_event_image', 'reshape_then_flat']:
             self.loader = reshape_then_flat
-        elif self.loader_type == 'reshape_then_acc_time_pol':
+        elif self.loader_type in ['timestamp_image', 'reshape_then_acc_time_pol']:
             self.loader = reshape_then_acc_time_pol
-        elif self.loader_type == 'reshape_then_acc_count_pol':
+        elif self.loader_type in ['event_histogram', 'reshape_then_acc_count_pol']:
             self.loader = reshape_then_acc_count_pol
         elif self.loader_type == 'reshape_then_acc_exp':
             self.loader = reshape_then_acc_exp
-        elif self.loader_type == 'reshape_then_acc_sort':
+        elif self.loader_type in ['sorted_time_surface', 'reshape_then_acc_sort']:
             self.loader = reshape_then_acc_sort
         elif self.loader_type == 'reshape_then_acc_intensity':
             self.loader = reshape_then_acc_intensity
-        elif self.loader_type == 'reshape_then_acc_adj_sort':
+        elif self.loader_type in ['dist', 'DiST', 'reshape_then_acc_adj_sort']:
             self.loader = reshape_then_acc_adj_sort
 
     def augment_parser(self, parser):
