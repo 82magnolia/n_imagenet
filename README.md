@@ -91,25 +91,33 @@ For example, if you want to change the batch size use the following command.
 ```
 python main.py --config configs/imagenet/cnn_adam_acc_two_channel_big_kernel_random_idx.ini --override 'batch_size=8'
 ```
+In addition, if you want to train a model using a different event representation, for example `timestamp image`, use the following command:
+```
+python main.py --config configs/imagenet/cnn_adam_acc_two_channel_big_kernel_random_idx.ini --override 'loader_type=timestamp_image'
+```
 
 ### Evaluating a Model
 Suppose you have a pretrained model saved in `PATH_TO_REPOSITORY/real_cnn_model/experiments/best.tar`.
-You evaluate the performance of this model on the N-ImageNet validation split by using the following command.
+You can evaluate the performance of this model on the N-ImageNet validation split by using the following command.
 ```
 python main.py --config configs/imagenet/cnn_adam_acc_two_channel_big_kernel_random_idx.ini --override 'load_model=PATH_TO_REPOSITORY/real_cnn_model/experiments/best.tar'
 ```
+For a new representation (e.g. `timestamp image`), one should also change the `loader_type` as follows:
+```
+python main.py --config configs/imagenet/cnn_adam_acc_two_channel_big_kernel_random_idx.ini --override 'load_model=PATH_TO_REPOSITORY/real_cnn_model/experiments/best.tar,loader_type=timestamp_image'
+```
 
 ### Naming Conventions
-The naming of event representations used in the codebase is different from that of the original paper. Please use the following table to convert event representations used in the paper to event representations used in the codebase.
+The naming of event representations used in the codebase is different from that of the original paper. Please use the following table to convert event representations used in the paper to event representations used in the codebase. Note that when specifying the representation names in the config `.ini`, you can also use the alias names shown in parentheses.
 
 | Paper               | Codebase                   |
 |---------------------|----------------------------|
-| DiST                | reshape_then_acc_adj_sort  |
-| Binary Event Image  | reshape_then_acc_flat_pol  |
-| Event Image         | reshape_then_acc           |
-| Timestamp Image     | reshape_then_acc_time_pol  |
-| Event Histogram     | reshape_then_acc_count_pol |
-| Sorted Time Surface | reshape_then_acc_sort      |
+| DiST                | reshape_then_acc_adj_sort (alias `dist`, `DiST`)  |
+| Binary Event Image  | reshape_then_acc_flat_pol (alias `binary_event_image`)  |
+| Event Image         | reshape_then_acc (alias `event_image`)           |
+| Timestamp Image     | reshape_then_acc_time_pol (alias `timestamp_image`)  |
+| Event Histogram     | reshape_then_acc_count_pol (alias `event_histogram`) |
+| Sorted Time Surface | reshape_then_acc_sort (alias `sorted_time_surface`)      |
 
 ### Downloading Pretrained Models
 One can download the pretrained models through the [following link](https://drive.google.com/drive/folders/1kmtgjX9hC2kRgUjoBklKt53ftkdQOZk-?usp=sharing).
