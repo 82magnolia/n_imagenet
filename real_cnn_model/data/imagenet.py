@@ -966,7 +966,7 @@ class ImageNetDataset(Dataset):
         event = self.event_parser(event_path)
         augment_mode = 'train' if self.mode == 'train' else 'eval'
         event = self.loader(event, augment=base_augment(augment_mode), neglect_polarity=getattr(self.cfg, 'neglect_polarity', False),
-            global_time=getattr(self.cfg, 'global_time', True), strict=getattr(self.cfg, 'strict', False), use_image=getattr(self.cfg, 'use_image', True),
+            global_time=getattr(self.cfg, 'global_time', True), strict=getattr(self.cfg, 'strict', False), use_image=getattr(self.cfg, 'use_image', False),
             denoise_sort=getattr(self.cfg, 'denoise_sort', False), denoise_image=getattr(self.cfg, 'denoise_image', False),
             filter_flash=getattr(self.cfg, 'filter_flash', False), filter_noise=getattr(self.cfg, 'filter_noise', False),
             quantize_sort=getattr(self.cfg, 'quantize_sort', None))
