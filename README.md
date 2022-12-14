@@ -8,14 +8,28 @@ Official PyTorch implementation of **N-ImageNet: Towards Robust, Fine-Grained Ob
 In this repository, we provide instructions for downloading N-ImageNet along with the implementation of the baseline models presented in the paper. 
 If you have any questions regarding the dataset or the baseline implementations, please leave an issue or contact 82magnolia@snu.ac.kr.
 
-**New:** Check out the public benchmark on object recognition and robust classification available at the following [link](https://paperswithcode.com/dataset/n-imagenet). Feel free to upload new results to the benchmark!
+:star2: **Update 1** :star2: Check out the public benchmark on object recognition and robust classification available at the following [link](https://paperswithcode.com/dataset/n-imagenet). Feel free to upload new results to the benchmark!
+
+:star2: **Update 2** :star2: We have newly released *mini* N-ImageNet:baby:! The dataset contains 100 classes, which is 1/10 of the original N-ImageNet. We expect the dataset to enable quick and light-weight evaluation of new event-based object recognition methods. To download the dataset, please refer to the instructions stated [here](https://github.com/82magnolia/n_imagenet/edit/main/README.md#downloading-mini-n-imagenet). To download the pretrained models, check [here](https://github.com/82magnolia/n_imagenet/edit/main/README.md#downloading-pretrained-models).
+
+## N-ImageNet Classification Benchmark
+We maintain a publicly available benchmark for N-ImageNet at the following [link](https://paperswithcode.com/dataset/n-imagenet). Feel free to upload new results to the benchmark!
+
+Currently we have three benchmarks available.
+- **Classification on entire N-ImageNet:** Here we report the classfication accuracy measured on the original validation split from N-ImageNet.
+- **Classification on N-ImageNet variants:** Here we report the average classification accuracy measured on the nine N-ImageNet variants. The N-ImageNet variants are recorded on various camera trajectory and lighting, and the details are further specified [here](https://openaccess.thecvf.com/content/ICCV2021/html/Kim_N-ImageNet_Towards_Robust_Fine-Grained_Object_Recognition_With_Event_Cameras_ICCV_2021_paper.html).
+- **Classification on mini N-ImageNet:** Here we report the classification accuracy on the mini original validation split which contains 100 classes. The models are assumed to be trained on the mini N-ImageNet train split which also contains the same number of classes.
 
 ## Downloading N-ImageNet
 To download N-ImageNet, please answer the following [questionaire](https://docs.google.com/forms/d/e/1FAIpQLScURvrZNQArc86M3tA4fKTCgoR_YKqDVuQcygkKttzu5pDEow/viewform?usp=sf_link).
 Once you fill out the questionaire, we will send you the donwload instructions for N-ImageNet.
 If you have any additional questions regarding the dataset or have not received an instructions link long after the questionaire is filled, drop an email to 82magnolia@snu.ac.kr.
 
-**Warning:** N-ImageNet is distributed through Google drive. Recently, we found that Google disables large file sharing if the number of total downloads for a short period of time reaches a certain limit. While this is not an issue most of the time, the file sharing links may break on paper deadlines or rebuttal periods. We therefore suggest authors to download N-ImageNet at least four weeks prior to the paper deadline, and earlier the better. Nevertheless, please leave an email to 82magnolia@snu.ac.kr if you are in urgent need of N-ImageNet and the file share links are not working.
+:warning:**Warning**:warning: N-ImageNet is distributed through Google drive. Recently, we found that Google disables large file sharing if the number of total downloads for a short period of time reaches a certain limit. While this is not an issue most of the time, the file sharing links may break on paper deadlines or rebuttal periods. We therefore suggest authors to download N-ImageNet at least four weeks prior to the paper deadline, and earlier the better. Nevertheless, please leave an email to 82magnolia@snu.ac.kr if you are in urgent need of N-ImageNet and the file share links are not working.
+
+## Downloading Mini N-ImageNet
+To download mini N-ImageNet, please use the following links: [Train Split](https://drive.google.com/file/d/1SLRl75OGZGEwm8z5pWAoPzvwEKMlX36C/view?usp=share_link), [Validation Split](https://drive.google.com/file/d/1NUoQm2oRzp8lS-X6IzW1hZoCY7i0JDJn/view?usp=share_link).
+For gaining access to the other mini validation splits from the N-ImageNet variants, please fill out the following [questionaire](https://docs.google.com/forms/d/e/1FAIpQLScURvrZNQArc86M3tA4fKTCgoR_YKqDVuQcygkKttzu5pDEow/viewform?usp=sf_link).
 
 ## Training / Evaluating Baseline Models
 ### Installation
@@ -79,6 +93,7 @@ ln -sf /home/user/assets/Datasets/N_Imagenet_cam/ ./  (If you have also download
 Congratulations! Now you can start training/testing models on N-ImageNet.
 
 ### Training a Model
+#### Full N-ImageNet dataset
 You can train a model based on the binary event image representation with the following command.
 ```
 export PYTHONPATH=PATH_TO_REPOSITORY:$PYTHONPATH
@@ -96,7 +111,20 @@ In addition, if you want to train a model using a different event representation
 python main.py --config configs/imagenet/cnn_adam_acc_two_channel_big_kernel_random_idx.ini --override 'loader_type=timestamp_image'
 ```
 
+#### Mini N-ImageNet dataset
+For training models on the mini N-ImageNet dataset, use the following command. Note that we provide the mini-counterparts for all the configs as configs with additional `_mini` prefixes attached in the `configs/` folder.
+```
+export PYTHONPATH=PATH_TO_REPOSITORY:$PYTHONPATH
+cd PATH_TO_REPOSITORY/real_cnn_model
+python main.py --config configs/imagenet/cnn_adam_acc_two_channel_big_kernel_random_idx_mini.ini
+```
+Similar to the example above, one can change the event representation with the `override` flag. For example, to train using `DiST`, use the following command:
+```
+python main.py --config configs/imagenet/cnn_adam_acc_two_channel_big_kernel_random_idx_mini.ini --override 'loader_type=dist'
+```
+
 ### Evaluating a Model
+#### Full N-ImageNet dataset
 Suppose you have a pretrained model saved in `PATH_TO_REPOSITORY/real_cnn_model/experiments/best.tar`.
 You can evaluate the performance of this model on the N-ImageNet validation split by using the following command.
 ```
@@ -105,6 +133,17 @@ python main.py --config configs/imagenet/cnn_adam_acc_two_channel_big_kernel_ran
 For a new representation (e.g. `timestamp image`), one should also change the `loader_type` as follows:
 ```
 python main.py --config configs/imagenet/cnn_adam_acc_two_channel_big_kernel_random_idx.ini --override 'load_model=PATH_TO_REPOSITORY/real_cnn_model/experiments/best.tar,loader_type=timestamp_image'
+```
+
+#### Mini N-ImageNet dataset
+Similar to the full N-ImageNet dataset, suppose you have a pretrained model saved in `PATH_TO_REPOSITORY/real_cnn_model_mini/experiments/best.tar`.
+You can evaluate the performance of this model on the mini N-ImageNet validation split by using the following command.
+```
+python main.py --config configs/imagenet/cnn_adam_acc_two_channel_big_kernel_random_idx_mini.ini --override 'load_model=PATH_TO_REPOSITORY/real_cnn_model_mini/experiments/best.tar'
+```
+For a new representation (e.g. `timestamp image`), one should also change the `loader_type` as follows:
+```
+python main.py --config configs/imagenet/cnn_adam_acc_two_channel_big_kernel_random_idx_mini.ini --override 'load_model=PATH_TO_REPOSITORY/real_cnn_model_mini/experiments/best.tar,loader_type=timestamp_image'
 ```
 
 ### Naming Conventions
@@ -120,8 +159,9 @@ The naming of event representations used in the codebase is different from that 
 | Sorted Time Surface | reshape_then_acc_sort (alias `sorted_time_surface`)      |
 
 ### Downloading Pretrained Models
-One can download the pretrained models through the [following link](https://drive.google.com/drive/folders/1kmtgjX9hC2kRgUjoBklKt53ftkdQOZk-?usp=sharing).
-Here we contain pretrained models and the configs used to train them.
+One can download the pretrained models on the N-ImageNet dataset through the following links. Here we contain pretrained models and the configs used to train them.
+- **Full N-ImageNet dataset:** [Link](https://drive.google.com/drive/folders/1kmtgjX9hC2kRgUjoBklKt53ftkdQOZk-?usp=sharing)
+- **Mini N-ImageNet dataset:** [Link](https://drive.google.com/drive/folders/1wVmCOwCoIgxjJkLNy-RO8pxfCQ0bbtyL?usp=share_link)
 
 ## Citation
 If you find the dataset or codebase useful, please cite
