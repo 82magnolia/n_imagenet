@@ -10,7 +10,7 @@ If you have any questions regarding the dataset or the baseline implementations,
 
 :star2: **Update 1** :star2: Check out the public benchmark on object recognition and robust classification available at the following [link](https://paperswithcode.com/dataset/n-imagenet). Feel free to upload new results to the benchmark!
 
-:star2: **Update 2** :star2: We have newly released *mini* N-ImageNet:baby:! The dataset contains 100 classes, which is 1/10 of the original N-ImageNet. We expect the dataset to enable quick and light-weight evaluation of new event-based object recognition methods. To download the dataset, please refer to the instructions stated [here](https://github.com/82magnolia/n_imagenet/edit/main/README.md#downloading-mini-n-imagenet). To download the pretrained models, check [here](https://github.com/82magnolia/n_imagenet/edit/main/README.md#downloading-pretrained-models).
+:star2: **Update 2** :star2: We have newly released *mini* N-ImageNet:baby:! The dataset contains 100 classes, which is 1/10 of the original N-ImageNet. We expect the dataset to enable quick and light-weight evaluation of new event-based object recognition methods. To download the dataset, please refer to the instructions stated [here](https://github.com/82magnolia/n_imagenet#downloading-mini-n-imagenet). To download the pretrained models, check [here](https://github.com/82magnolia/n_imagenet#downloading-pretrained-models).
 
 ## N-ImageNet Classification Benchmark
 We maintain a publicly available benchmark for N-ImageNet at the following [link](https://paperswithcode.com/dataset/n-imagenet). Feel free to upload new results to the benchmark!
