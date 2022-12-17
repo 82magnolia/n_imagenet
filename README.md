@@ -42,7 +42,7 @@ conda activate e2t
 In addition, you must install pytorch_scatter. Follow the instructions provided in the [pytorch_scatter github repo](https://github.com/rusty1s/pytorch_scatter). You need to install the version for torch 1.7.1 and CUDA 10.1.
 
 ### Dataset Setup
-Before you move on to the next step, please download N-ImageNet. Once you download N-ImageNet, you will spot a structure as follows.
+Before you move on to the next step, please download N-ImageNet. Once you download N-ImageNet, you will spot a structure as follows. **Note:** If you are using mini N-ImageNet, after downloading you will need to re-structure the directory as below, namely move all the validation data below `extracted_val` and all the training data below `extracted_train`.
 ```
 N_Imagenet
 ├── train_list.txt
