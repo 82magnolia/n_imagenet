@@ -30,7 +30,7 @@ If you have any additional questions regarding the dataset, drop an email to 82m
 
 ## Downloading Mini N-ImageNet
 You can directly download mini N-ImageNet from [here](https://zenodo.org/record/6388221#.Y51iJNJBw5k).
-For gaining access to the other mini validation splits from the N-ImageNet variants, please fill out the following [questionaire](https://docs.google.com/forms/d/e/1FAIpQLScURvrZNQArc86M3tA4fKTCgoR_YKqDVuQcygkKttzu5pDEow/viewform?usp=sf_link).
+For gaining access to the other mini validation splits from the N-ImageNet variants, please refer to the following [instructions](https://docs.google.com/document/d/1x0Vqe_5tVAJtYLYSZLwN6oNMExyUjIh-a30oLOKV2rE/edit?usp=share_link).
 
 ## Installation and Dataset Preparation
 ### Installation
