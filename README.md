@@ -12,7 +12,9 @@ If you have any questions regarding the dataset or the baseline implementations,
 
 :star2: **Update 2** :star2: Check out the public benchmark on object recognition and robust classification available at the following [link](https://paperswithcode.com/dataset/n-imagenet). Feel free to upload new results to the benchmark!
 
-:star2: **Update 3** :star2: We have newly released *mini* N-ImageNet:baby:! The dataset contains 100 classes, which is 1/10 of the original N-ImageNet. We expect the dataset to enable quick and light-weight evaluation of new event-based object recognition methods. To download the dataset, please refer to the instructions stated [here](https://github.com/82magnolia/n_imagenet#downloading-mini-n-imagenet). To download the pretrained models, check [here](https://github.com/82magnolia/n_imagenet#downloading-pretrained-models).
+:star2: **Update 3** :star2: We have newly released *mini* N-ImageNet :baby:! The dataset contains 100 classes, which is 1/10 of the original N-ImageNet. We expect the dataset to enable quick and light-weight evaluation of new event-based object recognition methods. To download the dataset, please refer to the instructions stated [here](https://github.com/82magnolia/n_imagenet#downloading-mini-n-imagenet). To download the pretrained models, check [here](https://github.com/82magnolia/n_imagenet#downloading-pretrained-models).
+
+:star2: **Update 4** :star2: We *finally* fixed the download issues with full N-ImageNet! Now N-ImageNet can be easily downloaded from HuggingFace Datasets :hugs:. Detailed instructions are provided [below](https://github.com/82magnolia/n_imagenet#downloading-n-imagenet). 
 
 ## N-ImageNet Classification Benchmark
 We maintain a publicly available benchmark for N-ImageNet at the following [link](https://paperswithcode.com/dataset/n-imagenet). Feel free to upload new results to the benchmark!
@@ -23,14 +25,13 @@ Currently we have three benchmarks available.
 - **Classification on mini N-ImageNet:** Here we report the classification accuracy on the mini original validation split which contains 100 classes. The models are assumed to be trained on the mini N-ImageNet train split which also contains the same number of classes.
 
 ## Downloading N-ImageNet
-To download N-ImageNet, please refer to the following [instructions](https://docs.google.com/document/d/1x0Vqe_5tVAJtYLYSZLwN6oNMExyUjIh-a30oLOKV2rE/edit?usp=share_link).
+N-ImageNet can be downloaded from Huggingface Datasets: follow the link [here](https://huggingface.co/datasets/82magnolia/N-ImageNet).
+Please refer to the following [instructions](https://docs.google.com/document/d/1x0Vqe_5tVAJtYLYSZLwN6oNMExyUjIh-a30oLOKV2rE/edit?usp=share_link) to learn about how the dataset is organized.
 If you have any additional questions regarding the dataset, drop an email to 82magnolia@snu.ac.kr.
-
-:warning:**Warning**:warning: N-ImageNet is distributed through Google drive. Recently, we found that Google disables large file sharing if the number of total downloads for a short period of time reaches a certain limit. While this is not an issue most of the time, the file sharing links may break on paper deadlines or rebuttal periods. We therefore suggest authors to download N-ImageNet at least four weeks prior to the paper deadline, and earlier the better. Nevertheless, please leave an email to 82magnolia@snu.ac.kr if you are in urgent need of N-ImageNet and the file share links are not working. In previous cases we manages to share N-ImageNet using scp, provided that the requester shares the destination IP.
 
 ## Downloading Mini N-ImageNet
 You can directly download mini N-ImageNet from [here](https://zenodo.org/record/6388221#.Y51iJNJBw5k).
-For gaining access to the other mini validation splits from the N-ImageNet variants, please refer to the following [instructions](https://docs.google.com/document/d/1x0Vqe_5tVAJtYLYSZLwN6oNMExyUjIh-a30oLOKV2rE/edit?usp=share_link).
+For gaining access to the other mini validation splits from the N-ImageNet variants, please refer to the following [link](https://huggingface.co/datasets/82magnolia/N-ImageNet/tree/main/mini_validation_variations).
 
 ## Installation and Dataset Preparation
 ### Installation
