@@ -26,7 +26,7 @@ Currently we have three benchmarks available.
 
 ## Downloading N-ImageNet
 N-ImageNet can be downloaded from Huggingface Datasets: follow the link [here](https://huggingface.co/datasets/82magnolia/N-ImageNet).
-Please refer to the following [instructions](https://docs.google.com/document/d/1x0Vqe_5tVAJtYLYSZLwN6oNMExyUjIh-a30oLOKV2rE/edit?usp=share_link) to learn about how the dataset is organized.
+Please refer to the following [instructions](https://docs.google.com/document/d/1bliFASar5S7t1Ws_wORhUZA4KzF7bZ9fvyNaLt_n9U0/edit?usp=sharing) to learn about how the dataset is organized.
 If you have any additional questions regarding the dataset, drop an email to 82magnolia@snu.ac.kr.
 
 ## Downloading Mini N-ImageNet
