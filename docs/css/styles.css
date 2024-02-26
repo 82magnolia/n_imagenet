@@ -1,0 +1,86 @@
+.navbar.logo {
+  margin-top: 2.5rem;
+}
+
+.navbar-brand.logo {
+  align-items: center;
+}
+
+.navbar-item.logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0px;
+}
+
+.navbar-item.logo img {
+  max-height: 80px;
+}
+
+.publication-title {
+  font-family: "Encode Sans", sans-serif;
+  font-weight: 600;
+}
+
+.publication-authors {
+  font-family: "Encode Sans", sans-serif;
+  font-weight: 500;
+}
+
+.publication-institute {
+  font-family: "Encode Sans", sans-serif;
+  font-weight: 400;
+}
+
+.publication-video {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  border-radius: 10px !important;
+}
+
+.publication-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.publication-keywords {
+  color: #14274e;
+}
+
+.author-blocks {
+  color: #50549b;
+}
+
+.author-blocks:hover {
+  color: #9bb4c2;
+}
+
+.link-blocks {
+  margin-top: 1rem;
+}
+
+.link-button {
+  color: #f5f5f5;
+  background-color: #143163;
+  border-color: #143163;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.link-button:hover {
+  color: #f5f5f5;
+  background-color: #143163;
+  border-color: #143163;
+}
+
+.bibtex-box {
+  background-color: #f5f5f5;
+  font-family: "Roboto Mono", monospace;
+}
