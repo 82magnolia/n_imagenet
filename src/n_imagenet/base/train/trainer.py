@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-from base.models.model_container import ModelContainer
-from base.data.data_container import DataContainer
+from n_imagenet.base.models.model_container import ModelContainer
+from n_imagenet.base.data.data_container import DataContainer
 import torch
 
 
@@ -11,7 +11,7 @@ class Trainer(ABC):
     Note that cfg contains all the neccessary data needed to create a model container.
     If multiple optimizers/schedulers are needed, write init_optmizer, init_scheduler such that self.optimizer, self.scheduler is a dictionary.
     """
-    
+
     def __init__(self, cfg, model_container: ModelContainer, data_container: DataContainer, **kwargs):
         """
         Initialize Trainer instance
@@ -35,7 +35,7 @@ class Trainer(ABC):
     @abstractmethod
     def init_env(self, **kwargs):
         """
-        Using contents from self.cfg, initialize variables related to training environment: self.writer, self.devices, self.exp_save_dir 
+        Using contents from self.cfg, initialize variables related to training environment: self.writer, self.devices, self.exp_save_dir
         """
         pass
 
@@ -67,7 +67,7 @@ class Trainer(ABC):
     def test(self, data_dict, **kwargs):
         """
         Unit operation for testing. Could be further wrapped for epoch-wise, batch-wise testing.
-        
+
         Args:
             data_dict: Dictionary containing data used for testing. Possibly it may include input data, labels, etc.
         """

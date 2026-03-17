@@ -1,4 +1,4 @@
-from base.utils.time_utils import Timer
+from n_imagenet.base.utils.time_utils import Timer
 
 
 class Tracker:
@@ -11,16 +11,16 @@ class Tracker:
         self.infer_timer = Timer()
         self.load_time = 0.0
         self.infer_time = 0.0
-    
+
     def start_load_timing(self):
         self.load_timer.start()
-    
+
     def end_load_timing(self):
         self.load_time = self.load_timer.stop()
-    
+
     def start_infer_timing(self):
         self.infer_timer.start()
-    
+
     def end_infer_timing(self):
         self.infer_time = self.infer_timer.stop()
 
@@ -38,16 +38,16 @@ class MiniBatchTracker(Tracker):
         self.total_train_loss = AverageMeter()
         self.total_val_correct = Accumulator()
         self.total_val_num = Accumulator()
-    
+
     def init_run(self):
         # Set tracking parameters at the beginning of run
         self.total_iter = 0
         self.total_val_iter = 0
-    
+
     def set_epoch(self, epoch):
         # Set current epoch
         self.epoch = epoch
-    
+
     def init_epoch(self, mode):
         # Set tracking parameters at the beginning of run_epoch
         assert mode == 'train' or mode == 'val'
@@ -56,11 +56,11 @@ class MiniBatchTracker(Tracker):
         elif mode == 'val':
             self.total_val_correct.reset()
             self.total_val_num.reset()
-        
+
     def set_batch(self, batch_idx):
         # Set current batch
         self.batch_idx = batch_idx
-    
+
     def init_batch(self, mode):
         # Set tracking parameters at the beginning of train_batch and val_batch
         assert mode == 'train' or mode == 'val'
@@ -68,7 +68,7 @@ class MiniBatchTracker(Tracker):
             self.total_iter += 1
         elif mode == 'val':
             self.total_val_iter += 1
-        
+
     def get_val_acc(self):
         return float(self.total_val_correct.get_val()) / float(self.total_val_num.get_val())
 
@@ -85,13 +85,13 @@ class SequenceTracker(MiniBatchTracker):
         self.total_top_5 = AverageMeter()
         self.references = list() # references (true captions) for calculating BLEU-4 score
         self.hypotheses = list() # hypotheses (predictions)
-    
+
     def init_run(self):
         super(SequenceTracker, self).init_run()
         self.best_bleu4.reset()
         self.epochs_since_improvement = 0
         self.start_epoch = 1
-    
+
     def init_epoch(self, mode):
         super(SequenceTracker, self).init_epoch(mode)
         if mode == 'train':
@@ -124,13 +124,13 @@ class AverageMeter:
 
     def get_sum(self):
         return self.sum
-    
+
     def get_val(self):
         return self.val
 
     def get_count(self):
         return self.count
-    
+
     def get_avg(self):
         return self.avg
 
@@ -144,7 +144,7 @@ class Accumulator:
         # Method can be one of 'add', 'sub', 'max', 'min'
         self.val = val
         self.accu_method = accu_method
-    
+
     def accumulate(self, target):
         if self.accu_method == 'add':
             self.val += target
@@ -154,12 +154,12 @@ class Accumulator:
             self.val = max(self.val, target)
         elif self.accu_method == 'min':
             self.val = min(self.val, target)
-    
+
     def get_val(self):
         return self.val
-    
+
     def reset(self):
         self.val = 0
-    
+
     def set_val(self, val):
         self.val = val

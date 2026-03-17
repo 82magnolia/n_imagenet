@@ -1,11 +1,11 @@
 import argparse
-from base.utils.parse_utils import parse_ini, parse_value
+from n_imagenet.base.utils.parse_utils import parse_ini, parse_value
 import subprocess
-from real_cnn_model.data.data_container import ImageNetContainer
-from real_cnn_model.models.model_container import CNNContainer
-from real_cnn_model.train.trainer import CNNTrainer
+from n_imagenet.data.data_container import ImageNetContainer
+from n_imagenet.models.model_container import CNNContainer
+from n_imagenet.train.trainer import CNNTrainer
 import configparser
-from collections import namedtuple 
+from collections import namedtuple
 
 
 def main():
@@ -49,12 +49,12 @@ def main():
         cfg_dict = cfg._asdict()
 
         Config = namedtuple('Config', tuple(set(cfg._fields + tuple(override_dict.keys()))))
-        
+
         cfg_dict.update(override_dict)
 
         cfg = Config(**cfg_dict)
         cfg = cfg._replace(name=cfg.name + "_" + args.override)
-    
+
     # Make instance of data container
     data_container = ImageNetContainer(cfg)
 

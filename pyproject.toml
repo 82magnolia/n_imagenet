@@ -1,0 +1,51 @@
+[project]
+name = "n-imagenet"
+version = "1.0.0"
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+[tool.pixi.environments]
+cpu = ["cpu"]
+default = ["cuda"]
+
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/n_imagenet"]
+
+[tool.pixi.tasks]
+train = {cmd = "python src/n_imagenet/main.py --config configs/imagenet/cnn_adam_acc_two_channel_big_kernel_random_idx.ini"}
+
+[tool.pixi.pypi-dependencies]
+n-imagenet = { path = ".", editable = true }
+
+[tool.pixi.feature.cuda.system-requirements]
+cuda = "12"
+
+[tool.pixi.feature.cuda.dependencies]
+pytorch-gpu="*"
+cudatoolkit="*"
+
+[tool.pixi.feature.cpu.dependencies]
+pytorch-cpu="*"
+
+[tool.pixi.dependencies]
+python="*"
+torchvision="*"
+opencv="*"
+tqdm="*"
+scikit-video="*"
+eigen="*"
+boost="*"
+boost-cpp="*"
+pybind11="*"
+nltk="*"
+flake8="*"
+tensorboard="*"
+scikit-image="*"
+matplotlib="*"
+pytorch_scatter="*"

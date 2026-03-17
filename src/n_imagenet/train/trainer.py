@@ -1,8 +1,8 @@
 import torch
-from base.models.model_container import ModelContainer
-from base.train.metrics import accuracy
-from base.data.data_container import DataContainer
-from base.train.common_trainer import CommonTrainer
+from n_imagenet.base.models.model_container import ModelContainer
+from n_imagenet.base.train.metrics import accuracy
+from n_imagenet.base.data.data_container import DataContainer
+from n_imagenet.base.train.common_trainer import CommonTrainer
 import torch.nn as nn
 import torch.optim as optim
 import matplotlib.pyplot as plt
@@ -66,7 +66,7 @@ class CNNTrainer(CommonTrainer):
         pred = self.model_container.infer('model', input_data, False)
 
         loss = self.loss_func(pred, label)
-        
+
         acc_1, acc_5 = accuracy(pred.cpu(), label.cpu(), topk=(1, min(5, pred.shape[-1])))
         loss.backward()
         self.optimizer.step()
@@ -100,7 +100,7 @@ class CNNTrainer(CommonTrainer):
                 self.inspect_input(input_data)
             if self.debug_labels:
                 self.inspect_labels(pred, label, acc_1)
-        
+
         return acc_1, acc_5, num_correct, tot_num
 
     def save_model(self, total_epoch, total_iter, total_val_iter, **kwargs):
@@ -112,7 +112,7 @@ class CNNTrainer(CommonTrainer):
             total_iter: Current total number of iterations
             total_val_iter: Current total number of validation iterations
         """
-        
+
         save_mode = self.cfg.save_by
         multi_gpu = torch.cuda.device_count() >= 1 and self.cfg.parallel
 
@@ -149,11 +149,11 @@ class CNNTrainer(CommonTrainer):
                         'epoch': total_epoch,
                         'state_dict': model.state_dict(),
                     }, save_dir)
-    
+
     def prep_train(self):
         """
-        Funcion called before training begins. Auxiliary function for initializng different training 
-        configurations such as model parallelism and weight freezing. 
+        Funcion called before training begins. Auxiliary function for initializng different training
+        configurations such as model parallelism and weight freezing.
         """
         # Prepare for data parallelism
         self.model_container.load_saved()
@@ -167,7 +167,7 @@ class CNNTrainer(CommonTrainer):
             unq, cnt = torch.unique(pred.argmax(-1), return_counts=True)
             print("GT label: " + self.data_container.dataset[self.cfg.mode].labels[label[0]] + f" {label[0]}")
             print("Most predicted: " + self.data_container.dataset[self.cfg.mode].labels[unq[cnt.argmax()]] + f" {unq[cnt.argmax()]}")
-        
+
     def inspect_input(self, input_data):
         inspect_channel = getattr(self.cfg, 'inspect_channel', 0)
         inspect_index = getattr(self.cfg, 'inspect_index', 0)
@@ -183,7 +183,7 @@ class CNNTrainer(CommonTrainer):
 
         if inspect_channel == 'all':
             fig = plt.figure(figsize=(50, 50))
-      
+
             tmp = input_data[inspect_index].permute(1, 2, 0)
             num_channel = tmp.shape[-1]
 

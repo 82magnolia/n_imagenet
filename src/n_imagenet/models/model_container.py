@@ -1,7 +1,7 @@
 from torchvision.models import resnet18, resnet34, resnet50, resnet101, resnet152, squeezenet1_1
 import torch.nn as nn
 import torch
-from base.models.model_container import ModelContainer
+from n_imagenet.base.models.model_container import ModelContainer
 
 
 class CNNContainer(ModelContainer):
@@ -47,7 +47,7 @@ class CNNContainer(ModelContainer):
             model.features[0] = nn.Conv2d(4, 64, kernel_size=7, stride=2)
 
         freeze_weights = getattr(self.cfg, 'freeze', False)
-        
+
         if freeze_weights:
             for param in model.parameters():
                 param.requires_grad = False
@@ -75,7 +75,7 @@ class CNNContainer(ModelContainer):
 
         if pretrained_num_classes is not None:
             self.models['model'].fc = nn.Linear(512, pretrained_num_classes)
-        
+
         if self.cfg.load_model is not None:
             print(f"Loading model from {self.cfg.load_model}")
             state_dict = torch.load(self.cfg.load_model)

@@ -4,9 +4,9 @@ from torch.utils.tensorboard import SummaryWriter
 import torch.optim as optim
 import torch
 from time import time
-from base.train.mini_batch_trainer import MiniBatchTrainer
+from n_imagenet.base.train.mini_batch_trainer import MiniBatchTrainer
 from abc import abstractmethod
-from base.utils.tracker import MiniBatchTracker
+from n_imagenet.base.utils.tracker import MiniBatchTracker
 
 
 class CommonTrainer(MiniBatchTrainer):
@@ -15,7 +15,7 @@ class CommonTrainer(MiniBatchTrainer):
     """
     def init_env(self, **kwargs):
         """
-        Using contents from self.cfg, initialize variables related to training environment: self.writer, self.devices, self.exp_save_dir 
+        Using contents from self.cfg, initialize variables related to training environment: self.writer, self.devices, self.exp_save_dir
         """
         assert self.cfg.mode in ['train', 'test']
         time_stamp = datetime.now().strftime("%Y-%m-%d-%H:%M:%S")
@@ -26,7 +26,7 @@ class CommonTrainer(MiniBatchTrainer):
         self.devices = [torch.device(f"cuda:{i}") for i in range(torch.cuda.device_count())]
         self.devices[0] = torch.device('cuda:0' if self.use_cuda else 'cpu')
         self.tracker = MiniBatchTracker()
-    
+
     def init_optimizer(self, **kwargs):
         """
         Initialize self.optimizer using self.cfg.
@@ -63,13 +63,13 @@ class CommonTrainer(MiniBatchTrainer):
 
             self.tracker.init_run()
 
-            for epoch in range(1, self.cfg.epochs + 1):    
+            for epoch in range(1, self.cfg.epochs + 1):
                 self.tracker.set_epoch(epoch)
                 self.run_epoch()
-        
+
             full_training_time = (time() - start_full_time) / 3600
             print(f"Full training time = {full_training_time:.2f} HR")
-            
+
         elif self.cfg.mode == 'test':
             if not self.exp_save_dir.is_dir():
                 self.exp_save_dir.mkdir(parents=True, exist_ok=True)
@@ -78,9 +78,9 @@ class CommonTrainer(MiniBatchTrainer):
     def run_epoch(self):
         # Train
         print(f"This is {self.tracker.epoch}-th epoch.")
-        
+
         self.tracker.init_epoch(mode='train')
-        
+
         skip_train = getattr(self.cfg, 'skip_train', False)
 
         if not skip_train:
@@ -94,10 +94,10 @@ class CommonTrainer(MiniBatchTrainer):
         self.tracker.init_epoch(mode='val')
         self.validate_epoch()
         print(f"Total validation accuracy = {(self.tracker.get_val_acc()):.4f}")
-        
+
         # Update scheduler
         self.scheduler.step(self.tracker.get_val_acc())
-        
+
         # Save model by epoch (depends on cfg)
         if self.cfg.save_by == 'epoch':
             self.save_model(self.tracker.epoch, self.tracker.total_iter, self.tracker.total_val_iter)
@@ -160,13 +160,13 @@ class CommonTrainer(MiniBatchTrainer):
 
         loss, acc_1, acc_5 = self.train(data_dict)
         self.tracker.end_infer_timing()
-        
+
         write_dict = {'training loss': loss, 'top 1 training accuracy': acc_1, 'top 5 training accuracy': acc_5, 'load time': self.tracker.load_time}
         print_dict = {'Iter': self.tracker.batch_idx, 'training loss': loss, 'top 1 training acc': acc_1, 'top 5 training acc': acc_5,
         'infer time': self.tracker.infer_time, 'load time': self.tracker.load_time}
         self.print_state(print_dict)
         self.write(self.tracker.total_iter, write_dict)
-        
+
         self.tracker.total_train_loss.update(loss)
         if self.cfg.save_by == 'iter':
             self.save_model(self.tracker.epoch, self.tracker.total_iter, self.tracker.total_val_iter)
@@ -175,25 +175,25 @@ class CommonTrainer(MiniBatchTrainer):
         self.tracker.init_batch(mode='val')
         val_acc_1, val_acc_5, val_correct, val_num = self.test(data_dict)
         write_dict = {'top 1 validation accuracy': val_acc_1, 'top 5 validation accuracy': val_acc_5}
-        print_dict = {'Iter': self.tracker.batch_idx, 'top 1 validation acc': val_acc_1, 'top 5 validation acc': val_acc_5, 
+        print_dict = {'Iter': self.tracker.batch_idx, 'top 1 validation acc': val_acc_1, 'top 5 validation acc': val_acc_5,
         'load time': self.tracker.load_time}
         self.print_state(print_dict)
         self.write(self.tracker.total_val_iter, write_dict)
         self.tracker.total_val_correct.accumulate(val_correct)
-        self.tracker.total_val_num.accumulate(val_num)        
+        self.tracker.total_val_num.accumulate(val_num)
 
     @abstractmethod
     def prep_train(self):
         """
-        Funcion called before training begins. Auxiliary function for initializng different training 
-        configurations such as model parallelism and weight freezing. 
+        Funcion called before training begins. Auxiliary function for initializng different training
+        configurations such as model parallelism and weight freezing.
         """
         pass
 
 
 class CommonChunkTrainer(CommonTrainer):
     """
-    Abstract class for commonly used trainer, where loading is based on caching chunks in RAM. Implements several abstract 
+    Abstract class for commonly used trainer, where loading is based on caching chunks in RAM. Implements several abstract
     methods to facilitate code reuse.
     """
 
@@ -227,4 +227,4 @@ class CommonChunkTrainer(CommonTrainer):
                 self.tracker.start_load_timing()
                 batch_idx += 1
         self.tracker.end_load_timing()
-        self.data_container.release_chunk('val')        
+        self.data_container.release_chunk('val')

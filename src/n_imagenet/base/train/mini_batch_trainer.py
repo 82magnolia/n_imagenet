@@ -1,7 +1,7 @@
 from abc import abstractmethod
-from base.models.model_container import ModelContainer
-from base.data.data_container import DataContainer
-from base.train.trainer import Trainer
+from n_imagenet.base.models.model_container import ModelContainer
+from n_imagenet.base.data.data_container import DataContainer
+from n_imagenet.base.train.trainer import Trainer
 
 
 class MiniBatchTrainer(Trainer):
@@ -83,7 +83,7 @@ class MiniBatchTrainer(Trainer):
     @abstractmethod
     def run(self):
         """
-        Uppermost method dedicated to running trainer. This will consist of initializing global_dict and 
+        Uppermost method dedicated to running trainer. This will consist of initializing global_dict and
         calling self.run_epoch(), self.run_test().
         """
         pass

@@ -1,15 +1,15 @@
 import torch
-from base.models.model_container import ModelContainer
-from base.data.data_container import DataContainer
-from base.train.mini_batch_trainer import MiniBatchTrainer
+from n_imagenet.base.models.model_container import ModelContainer
+from n_imagenet.base.data.data_container import DataContainer
+from n_imagenet.base.train.mini_batch_trainer import MiniBatchTrainer
 from nltk.translate.bleu_score import corpus_bleu
 from tqdm import tqdm
 import torch.nn.functional as F
-from base.utils.time_utils import Timer
+from n_imagenet.base.utils.time_utils import Timer
 from datetime import datetime
 from torch.utils.tensorboard import SummaryWriter
 import pathlib
-from base.utils.tracker import SequenceTracker
+from n_imagenet.base.utils.tracker import SequenceTracker
 
 
 class CaptionTrainer(MiniBatchTrainer):
@@ -18,7 +18,7 @@ class CaptionTrainer(MiniBatchTrainer):
         if self.cfg.checkpoint is not None:
             self.checkpoint = torch.load(self.cfg.checkpoint)
         self.tracker = SequenceTracker()
-        
+
     def load_status(self):
         if self.cfg.checkpoint is not None:
             self.tracker.start_epoch = self.checkpoint['epoch'] + 1
@@ -56,7 +56,7 @@ class CaptionTrainer(MiniBatchTrainer):
         elif self.cfg.mode == 'test':
             self.model_container.set_eval(['encoder', 'decoder'])
             self.run_test()
-    
+
     def run_epoch(self):
         # Scheduler
         try:
@@ -65,9 +65,9 @@ class CaptionTrainer(MiniBatchTrainer):
             pass
 
         # One epoch's training
-        
+
         self.train_epoch()
-        
+
         # One epoch's validation
         recent_bleu4 = self.validate_epoch()
 
@@ -105,7 +105,7 @@ class CaptionTrainer(MiniBatchTrainer):
             self.train_batch(data_dict)
             self.tracker.start_load_timing()
         self.tracker.end_load_timing()
-                
+
         avg_top_5 = self.tracker.total_top_5.get_avg()
         avg_train_loss = self.tracker.total_train_loss.get_avg()
 
@@ -117,7 +117,7 @@ class CaptionTrainer(MiniBatchTrainer):
 
     def train_batch(self, data_dict):
         self.tracker.init_batch('train')
-        
+
         self.tracker.start_infer_timing()
 
         loss, top5 = self.train(data_dict)
@@ -133,7 +133,7 @@ class CaptionTrainer(MiniBatchTrainer):
         write_dict = {'training_loss': loss, 'top 5 train accuracy': top5, 'load_time': self.tracker.load_time}
         self.print_state(print_dict)
         self.write(self.tracker.total_iter, write_dict)
-        
+
         if self.cfg.save_by == 'iter':
             self.save_model(self.tracker.epoch, self.tracker.total_iter, self.tracker.total_val_iter,
                 epochs_since_improvement=self.tracker.epochs_since_improvement, bleu_4=self.tracker.best_bleu4.get_val())

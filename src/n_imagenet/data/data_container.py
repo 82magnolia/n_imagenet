@@ -1,6 +1,6 @@
-from real_cnn_model.data.imagenet import ImageNetDataset
+from n_imagenet.data.imagenet import ImageNetDataset
 from torch.utils.data import DataLoader
-from base.data.data_container import DataContainer
+from n_imagenet.base.data.data_container import DataContainer
 import torch
 
 
